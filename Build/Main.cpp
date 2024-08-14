@@ -37,18 +37,17 @@ int main()
 
 	// 0 - mainmenu
 	// 1 - maingame
-	int switchStatements = 0;
+	int switchStatements = 1;
 	bool gameRunning = true;
 	bool inventoryOpen = false;
 	bool leaderBoardOpen = false;
 	bool b_invOpen = true;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080, 32), "Game Demo", sf::Style::Default); //Draw an SFML window.
 	sf::RenderWindow* windowPtr = &window;
-
 	sf::View Pov; // pov window
 	sf::View* PovPtr = &Pov;
 	Pov.setSize(1920.f, 1090.f);
-	Pov.setCenter(0, 0); // sets the centre of the pov to 0,0, so it is in the centre of the entire map
+	Pov.setCenter(320, 1000); // sets the centre of the pov to 0,0, so it is in the centre of the entire map
 
 	sf::Vector2f mousePos;
 	float povSpeed = 10.f;
@@ -56,7 +55,9 @@ int main()
 	Player player(100, 0.f, 1.f, 5.f);
 	Player* playerPtr = &player;
 	UI userInterface;
-	TileMap map(20, 64, 1.f);
+	TileMap map(30, 64, 1.f, 10, 20);
+	//640 wide
+	//1280 long
 	Scenery scenery(map.getMapSize(), map.getImageSize());
 	EnemyManager enemyManager(map.getMapSize(), map.getImageSize(), 10, 5.f);
 
@@ -111,7 +112,7 @@ int main()
 
 	//	5. Use of async and futures to read the file provided in the GitHub repository into a suitable container
 	// thread uses async and future to run the function along side other threads, and lodas the data in to a vector
-	std::future<int> th5 = std::async(std::launch::async, &CSVreader::readfile2, &csvfilestuff, "../Assets/UserDetails.csv");
+	//std::future<int> th5 = std::async(std::launch::async, &CSVreader::readfile2, &csvfilestuff, "../Assets/UserDetails.csv");
 
 
 	// thread to move all the positions of the enemies seperate from the mainloop
@@ -125,38 +126,38 @@ int main()
 		switch (switchStatements)
 		{
 
-		case 0:
-			gameRunning = false;
-			
-			//std::this_thread::sleep_for(std::chrono::seconds(5));
-			while (runtime.getElapsedTime().asSeconds() <= 5.f)
-			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					if (!ispressed)
-					{
-						ispressed = true;
-						mythreads.colour += 1;
+		//case 0:
+		//	gameRunning = false;
+		//	
+		//	//std::this_thread::sleep_for(std::chrono::seconds(5));
+		//	while (runtime.getElapsedTime().asSeconds() <= 5.f)
+		//	{
+		//		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		//		{
+		//			if (!ispressed)
+		//			{
+		//				ispressed = true;
+		//				mythreads.colour += 1;
 
-						if (mythreads.colour >= 4)
-						{
+		//				if (mythreads.colour >= 4)
+		//				{
 
-							mythreads.colour = 0; // changes the colour of the square in the splash screen
+		//					mythreads.colour = 0; // changes the colour of the square in the splash screen
 
-						}
-					}
-				}
-				else
-				{
-					ispressed = false;
-				}
-				
-			}
-			if (th5.get() == 1) // checks if the csv file was fully loaded before it goes to the main menu section
-			{
-				switchStatements = 1;
-			}
-			break;
+		//				}
+		//			}
+		//		}
+		//		else
+		//		{
+		//			ispressed = false;
+		//		}
+		//		
+		//	}
+		//	if (th5.get() == 1) // checks if the csv file was fully loaded before it goes to the main menu section
+		//	{
+		//		switchStatements = 1;
+		//	}
+		//	break;
 
 		case 1:
 			gameRunning = false;

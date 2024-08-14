@@ -53,7 +53,7 @@ void Enemy::move(sf::Vector2f playerPos, sf::FloatRect playerRect, float dt)
 		sf::Vector2f vel = distance * Speed;
 		if (length < 750.f && isAlive && !sprite.getGlobalBounds().intersects(playerRect))
 		{	// enemy only moves towards player if within a 500 pixel range and is alive
-			sprite.move(vel * dt);
+			sprite.move(sf::Vector2f(0,1) * dt);
 			sprite.setRotation(atan2(playerPos.y - sprite.getPosition().y, playerPos.x - sprite.getPosition().x) / (3.141 / 180));
 
 		}

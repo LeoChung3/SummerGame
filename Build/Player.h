@@ -61,6 +61,7 @@ public:
 		this->SetScale(scale);
 		f_playerSpeed = speed;
 		sprite.setTexture(txt_playerLeft);
+		SetPosition(sf::Vector2f(100.f, 100.f));
 	}
 	Player()
 	{

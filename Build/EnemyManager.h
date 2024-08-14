@@ -51,7 +51,7 @@ public:
 		NumOfEnemies = a;
 		for (int i = 0; i < a; i++) {
 			Enemies.push_back(Enemy());
-			Enemies[i].setSpritepos((rand() % (mappixels * 2)) - mappixels, (rand() % (mappixels * 2)) - mappixels);
+			Enemies[i].setSpritepos(rand() % 640, rand() % 640);
 
 			Enemies[i].loadTexture();
 			Enemies[i].setAlive();

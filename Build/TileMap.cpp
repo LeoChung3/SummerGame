@@ -10,13 +10,14 @@ int TileMap::getTile()
 void TileMap::drawMap(sf::RenderWindow* window, sf::View* camera)
 {
 
-    for (int i = -mapSize; i < mapSize; i++)
+    for (int i = 0; i < Width; i++)
     {
-        for (int i2 = -mapSize; i2 < mapSize; i2++)
+        cout << i << endl;
+        for (int i2 = 0; i2 < Length; i2++)
         {
             sf::FloatRect currentViewRect(camera->getCenter() - camera->getSize() / 2.f, camera->getSize());
 
-            sf::IntRect Image(imageSize * map[i + mapSize][i2 + mapSize], 0, imageSize, imageSize);
+            sf::IntRect Image(imageSize * map[0][0], 0, imageSize, imageSize);
             sf::Sprite tile(SpriteSheet, Image);
 
             tile.scale(scaling, scaling);

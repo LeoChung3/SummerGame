@@ -23,7 +23,7 @@ void Player::PlayerInput(Weapon& gun, sf::View* camera, float cameraSpeed, sf::V
 	//moves the camerapov
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		if (sprite.getPosition().y > (-mapsize * imagesize)) 
+		if (sprite.getPosition().y > 704) 
 		{
 			//playerMove(0.f, -cameraSpeed * dt);
 			playercamera->move(0.f, -cameraSpeed * dt);
@@ -31,7 +31,7 @@ void Player::PlayerInput(Weapon& gun, sf::View* camera, float cameraSpeed, sf::V
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		if (sprite.getPosition().x > (-mapsize * imagesize)) {
+		if (sprite.getPosition().x >0) {
 			//playerMove(-cameraSpeed * dt, 0.f);
 
 			playercamera->move(-cameraSpeed * dt, 0.f);
@@ -39,14 +39,14 @@ void Player::PlayerInput(Weapon& gun, sf::View* camera, float cameraSpeed, sf::V
 
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		if (sprite.getPosition().y < (mapsize * imagesize)) {
+		if (sprite.getPosition().y < 1280) {
 			//playerMove(0.f, cameraSpeed * dt);
 
 			playercamera->move(0.f, cameraSpeed * dt);
 		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (sprite.getPosition().x < (mapsize * imagesize)) {
+		if (sprite.getPosition().x < 640) {
 			//playerMove(cameraSpeed * dt, 0.f);
 
 			playercamera->move(cameraSpeed * dt, 0.f);

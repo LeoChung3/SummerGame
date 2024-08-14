@@ -11,11 +11,15 @@ public:
 	int mapSize = 20;
 	int imageSize = 0;
 	float scaling = 1.f;
-	TileMap(int mapsize, int imagesize, float scale)
+	float Width = 10.0f;
+	float Length = 30.0f;
+	TileMap(int mapsize, int imagesize, float scale, float width, float length)
 	{
 		mapSize = mapsize;
 		imageSize = imagesize;
 		scaling = scale;
+		Width = width;
+		Length = length;
 		if (!SpriteSheet.loadFromFile("../Assets/topdown/Tilesheet/tilesheet_complete.png"))
 		{
 			cout << "cant load sprite sheet" << endl;
